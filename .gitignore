@@ -1,0 +1,50 @@
+# Build directories
+build/
+bin/
+out/
+.cache/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Compiled libraries
+*.lib
+*.a
+*.la
+*.lo
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+
+# IDE specific files
+.vs/
+.vscode/
+*.suo
+*.user
+*.filters
+.idea/
+*.xcodeproj
+xcuserdata/
