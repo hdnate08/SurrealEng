@@ -9,12 +9,22 @@ namespace surreal {
     */
     class Vector3
     {
+        private:
+            // Padding to ensure four word alignment
+            real pad;
+
         public:
             // The default ctor creates a zero vector
             Vector3();
 
             // Explicit ctor creates vector with given components
             Vector3(const real x, const real y, const real z);
+
+            // Scales the vector by a scalar value
+            void operator*=(const real scalar);
+
+            // Scales the vector by a scalar value and returns a new vector
+            Vector3 operator*(const real scalar) const;
 
             // Holds the value along the x axis
             real x;
@@ -28,9 +38,14 @@ namespace surreal {
             // Flips all components of the vector
             void invert();
 
-        private:
-            // Padding to ensure four word alignment
-            real pad;
+            // Normalizes the vector to unit length
+            void normalize();
+
+            // Returns the magnitude of the vector
+            real getMagnitude() const;
+
+            // Returns the magnitude squared of the vector
+            real getMagnitudeSquared() const;
     };
 }
 
