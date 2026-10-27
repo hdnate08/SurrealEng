@@ -4,9 +4,14 @@ project(physeng VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(SurrealEng)
+add_executable(SurrealEng
+    src/main.cpp
+    src/core.cpp
+    include/core.hpp
+    include/precision.hpp
+)
 
-target_sources(SurrealEng
-	PRIVATE
-	    src/main.cpp
+target_include_directories(SurrealEng
+    PRIVATE
+        include
 )
