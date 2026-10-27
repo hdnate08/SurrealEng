@@ -68,4 +68,17 @@ auto Vector3::getMagnitudeSquared() const -> real
 {
     return x * x + y * y + z * z;
 }
+
+auto Vector3::componentProduct(const Vector3& rhs) const -> Vector3
+{
+    return Vector3(x * rhs.x, y * rhs.y, z * rhs.z);
 }
+
+auto Vector3::componentProductUpdate(const Vector3& rhs) -> void
+{
+    x *= rhs.x;
+    y *= rhs.y;
+    z *= rhs.z;
+}
+
+} // surreal namespace

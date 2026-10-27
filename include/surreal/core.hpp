@@ -58,6 +58,13 @@ namespace surreal {
 
             // Returns the magnitude squared of the vector
             real getMagnitudeSquared() const;
+            
+            // Returns component-wise product of this vector and another vector
+            Vector3 componentProduct(const Vector3& rhs) const;
+
+            // Updates this vector to be the component-wise product of this vector and another vector
+            void componentProductUpdate(const Vector3& rhs);
+
     };
 }
 
