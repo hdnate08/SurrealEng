@@ -1,6 +1,4 @@
-#include <iostream>
-
-#include "core.hpp"
+#include "surreal/core.hpp"
 
 namespace surreal {
 
