@@ -26,6 +26,18 @@ namespace surreal {
             // Scales the vector by a scalar value and returns a new vector
             Vector3 operator*(const real scalar) const;
 
+            // Adds another vector to this vector
+            void operator+=(const Vector3& rhs);
+
+            // Adds another vector to this vector and returns a new vector
+            Vector3 operator+(const Vector3& rhs) const;
+
+            // Subtracts another vector from this vector
+            void operator-=(const Vector3& rhs);
+
+            // Subtracts another vector from this vector and returns a new vector
+            Vector3 operator-(const Vector3& rhs) const;
+
             // Holds the value along the x axis
             real x;
 

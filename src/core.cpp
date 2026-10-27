@@ -20,6 +20,30 @@ auto Vector3::operator*(const real scalar) const -> Vector3
     return Vector3(x * scalar, y * scalar, z * scalar);
 }
 
+auto Vector3::operator+=(const Vector3& rhs) -> void
+{
+    x += rhs.x;
+    y += rhs.y;
+    z += rhs.z;
+}
+
+auto Vector3::operator+(const Vector3& rhs) const -> Vector3
+{
+    return Vector3(x + rhs.x, y + rhs.y, z + rhs.z);
+}
+
+auto Vector3::operator-=(const Vector3& rhs) -> void
+{
+    x -= rhs.x;
+    y -= rhs.y;
+    z -= rhs.z;
+}
+
+auto Vector3::operator-(const Vector3& rhs) const -> Vector3
+{
+    return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
+}
+
 auto Vector3::invert() -> void
 {
     x = -x;
