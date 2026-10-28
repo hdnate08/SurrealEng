@@ -81,4 +81,14 @@ auto Vector3::componentProductUpdate(const Vector3& rhs) -> void
     z *= rhs.z;
 }
 
+auto Vector3::scalarProduct(const Vector3& rhs) const -> real
+{
+    return x * rhs.x + y * rhs.y + z * rhs.z;
+}
+
+auto Vector3::operator*(const Vector3& rhs) const -> real
+{
+    return scalarProduct(rhs);
+}
+
 } // surreal namespace

@@ -26,6 +26,9 @@ namespace surreal {
             // Scales the vector by a scalar value and returns a new vector
             Vector3 operator*(const real scalar) const;
 
+            // Returns the scalar (dot) product of this vector and another vector
+            real operator*(const Vector3& rhs) const;
+
             // Adds another vector to this vector
             void operator+=(const Vector3& rhs);
 
@@ -65,6 +68,8 @@ namespace surreal {
             // Updates this vector to be the component-wise product of this vector and another vector
             void componentProductUpdate(const Vector3& rhs);
 
+            // Returns the scalar (dot) product of this vector and another vector
+            real scalarProduct(const Vector3& rhs) const;
     };
 }
 
