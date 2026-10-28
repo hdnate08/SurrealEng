@@ -41,6 +41,9 @@ namespace surreal {
             // Subtracts another vector from this vector and returns a new vector
             Vector3 operator-(const Vector3& rhs) const;
 
+            // Updates this vector to be the cross product of this vector and another vector
+            void operator%=(const Vector3& rhs);
+
             // Holds the value along the x axis
             real x;
 
@@ -70,6 +73,9 @@ namespace surreal {
 
             // Returns the scalar (dot) product of this vector and another vector
             real scalarProduct(const Vector3& rhs) const;
+
+            // Returns the cross product of this vector and another vector
+            Vector3 vectorProduct(const Vector3& rhs) const;
     };
 }
 

@@ -44,6 +44,11 @@ auto Vector3::operator-(const Vector3& rhs) const -> Vector3
     return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
 }
 
+auto Vector3::operator%=(const Vector3& rhs) -> void
+{
+    *this = vectorProduct(rhs);
+}
+
 auto Vector3::invert() -> void
 {
     x = -x;
@@ -89,6 +94,15 @@ auto Vector3::scalarProduct(const Vector3& rhs) const -> real
 auto Vector3::operator*(const Vector3& rhs) const -> real
 {
     return scalarProduct(rhs);
+}
+
+auto Vector3::vectorProduct(const Vector3& rhs) const -> Vector3
+{
+    return Vector3(
+        y * rhs.z - z * rhs.y,
+        z * rhs.x - x * rhs.z,
+        x * rhs.y - y * rhs.x
+    );
 }
 
 } // surreal namespace
