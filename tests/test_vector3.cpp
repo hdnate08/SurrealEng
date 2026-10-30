@@ -33,3 +33,27 @@ TEST_F(Vector3Test, Addition) {
     EXPECT_NEAR(result.y, 7.0, TOLERANCE);
     EXPECT_NEAR(result.z, 9.0, TOLERANCE);
 }
+
+TEST_F(Vector3Test, Subtraction) {
+    surreal::Vector3 result = v1 - v2;
+
+    EXPECT_NEAR(result.x, -3.0, TOLERANCE);
+    EXPECT_NEAR(result.y, -3.0, TOLERANCE);
+    EXPECT_NEAR(result.z, -3.0, TOLERANCE);
+}
+
+TEST_F(Vector3Test, ZeroVector) {
+    surreal::Vector3 result = v1 - v1;
+
+    EXPECT_NEAR(result.x, 0.0, TOLERANCE);
+    EXPECT_NEAR(result.y, 0.0, TOLERANCE);
+    EXPECT_NEAR(result.z, 0.0, TOLERANCE);
+}
+
+TEST_F(Vector3Test, Multiplication) {
+    surreal::Vector3 result = v1 * static_cast<surreal::real>(2.0);
+
+    EXPECT_NEAR(result.x, 2.0, TOLERANCE);
+    EXPECT_NEAR(result.y, 4.0, TOLERANCE);
+    EXPECT_NEAR(result.z, 6.0, TOLERANCE);
+}
