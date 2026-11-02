@@ -1,5 +1,5 @@
-#ifndef TEST_UTILS_HPP
-#define TEST_UTILS_HPP
+#ifndef TEST_UTILS_HPP_
+#define TEST_UTILS_HPP_
 
 namespace surreal::testing{
 
@@ -18,4 +18,4 @@ constexpr T get_tolerance() {
 
 }
 
-#endif // TEST_UTILS_HPP
+#endif // TEST_UTILS_HPP_

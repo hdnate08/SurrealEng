@@ -1,5 +1,5 @@
-#ifndef PRECISION_HPP
-#define PRECISION_HPP
+#ifndef PRECISION_HPP_
+#define PRECISION_HPP_
 
 namespace surreal{
 
@@ -8,4 +8,4 @@ namespace surreal{
     typedef float real;
 }
 
-#endif
+#endif // PRECISION_HPP_

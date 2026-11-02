@@ -1,5 +1,5 @@
-#ifndef CORE_HPP
-#define CORE_HPP
+#ifndef CORE_HPP_
+#define CORE_HPP_
 
 #include "surreal/precision.hpp"
 
@@ -20,29 +20,29 @@ namespace surreal {
             // Explicit ctor creates vector with given components
             Vector3(const real x, const real y, const real z);
 
-            // Scales the vector by a scalar value
-            void operator*=(const real scalar);
-
             // Scales the vector by a scalar value and returns a new vector
-            Vector3 operator*(const real scalar) const;
+            auto operator*(const real scalar) const -> Vector3;
 
-            // Returns the scalar (dot) product of this vector and another vector
-            real operator*(const Vector3& rhs) const;
+            // Scales the vector by a scalar value
+            auto operator*=(const real scalar) -> void;
 
-            // Adds another vector to this vector
-            void operator+=(const Vector3& rhs);
+            // Returns the dot product of this vector and another vector
+            auto operator*=(const Vector3& rhs) -> void;
 
             // Adds another vector to this vector and returns a new vector
-            Vector3 operator+(const Vector3& rhs) const;
+            auto operator+(const Vector3& rhs) const -> Vector3;
 
-            // Subtracts another vector from this vector
-            void operator-=(const Vector3& rhs);
+            // Adds another vector to this vector
+            auto operator+=(const Vector3& rhs) -> void;
 
             // Subtracts another vector from this vector and returns a new vector
-            Vector3 operator-(const Vector3& rhs) const;
+            auto operator-(const Vector3& rhs) const -> Vector3;
+
+            // Subtracts another vector from this vector
+            auto operator-=(const Vector3& rhs) -> void;
 
             // Updates this vector to be the cross product of this vector and another vector
-            void operator%=(const Vector3& rhs);
+            auto operator%=(const Vector3& rhs) -> void;
 
             // Holds the value along the x axis
             real x;
@@ -54,29 +54,26 @@ namespace surreal {
             real z;
 
             // Flips all components of the vector
-            void invert();
+            auto negate() -> void;
 
             // Normalizes the vector to unit length
-            void normalize();
+            auto normalize() -> void;
 
             // Returns the magnitude of the vector
-            real getMagnitude() const;
+            auto magnitude() const -> real;
 
             // Returns the magnitude squared of the vector
-            real getMagnitudeSquared() const;
+            auto magnitude_squared() const -> real;
             
             // Returns component-wise product of this vector and another vector
-            Vector3 componentProduct(const Vector3& rhs) const;
-
-            // Updates this vector to be the component-wise product of this vector and another vector
-            void componentProductUpdate(const Vector3& rhs);
+            auto component_product(const Vector3& rhs) const -> Vector3;
 
             // Returns the scalar (dot) product of this vector and another vector
-            real scalarProduct(const Vector3& rhs) const;
+            auto dot(const Vector3& rhs) const -> real;
 
             // Returns the cross product of this vector and another vector
-            Vector3 vectorProduct(const Vector3& rhs) const;
+            auto cross(const Vector3& rhs) const -> Vector3;
     };
 }
 
-#endif
+#endif // CORE_HPP_
