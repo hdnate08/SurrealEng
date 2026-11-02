@@ -14,31 +14,31 @@ namespace surreal {
             real pad;
 
         public:
-            // The default ctor creates a zero vector
+            // The default ctor creates a vector with all components set to zero
             Vector3();
 
-            // Explicit ctor creates vector with given components
+            // The parameterized ctor creates a vector with the given x, y, and z values
             Vector3(const real x, const real y, const real z);
 
             // Scales the vector by a scalar value and returns a new vector
             auto operator*(const real scalar) const -> Vector3;
 
-            // Scales the vector by a scalar value
+            // Updates this vector by scaling it by a scalar value
             auto operator*=(const real scalar) -> void;
 
-            // Returns the dot product of this vector and another vector
+            // Updates this vector by multiplying it component-wise with another vector
             auto operator*=(const Vector3& rhs) -> void;
 
             // Adds another vector to this vector and returns a new vector
             auto operator+(const Vector3& rhs) const -> Vector3;
 
-            // Adds another vector to this vector
+            // Updates this vector by adding another vector to it
             auto operator+=(const Vector3& rhs) -> void;
 
             // Subtracts another vector from this vector and returns a new vector
             auto operator-(const Vector3& rhs) const -> Vector3;
 
-            // Subtracts another vector from this vector
+            // Updates this vector by subtracting another vector from it
             auto operator-=(const Vector3& rhs) -> void;
 
             // Updates this vector to be the cross product of this vector and another vector
@@ -68,7 +68,7 @@ namespace surreal {
             // Returns component-wise product of this vector and another vector
             auto component_product(const Vector3& rhs) const -> Vector3;
 
-            // Returns the scalar (dot) product of this vector and another vector
+            // Returns the dot product of this vector and another vector
             auto dot(const Vector3& rhs) const -> real;
 
             // Returns the cross product of this vector and another vector
