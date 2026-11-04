@@ -117,6 +117,23 @@ TEST_F(Vector3Test, multiply_and_assign_operator_vector) {
     EXPECT_NEAR(v.z, 18.0, TOLERANCE);
 }
 
+TEST_F(Vector3Test, cross_product_operator) {
+    surreal::Vector3 result = v1 % v2;
+
+    EXPECT_NEAR(result.x, -3.0, TOLERANCE);
+    EXPECT_NEAR(result.y, 6.0, TOLERANCE);
+    EXPECT_NEAR(result.z, -3.0, TOLERANCE);
+}
+
+TEST_F(Vector3Test, cross_product_and_assign_operator) {
+    surreal::Vector3 v = v1;
+    v %= v2;
+
+    EXPECT_NEAR(v.x, -3.0, TOLERANCE);
+    EXPECT_NEAR(v.y, 6.0, TOLERANCE);
+    EXPECT_NEAR(v.z, -3.0, TOLERANCE);
+}
+
 TEST_F(Vector3Test, negation) {
     surreal::Vector3 v = v1;
     v.negate();
