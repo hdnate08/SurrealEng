@@ -1,6 +1,8 @@
 #include <cmath>
+#include <stdexcept>
 
 #include "surreal/core.hpp"
+#include "surreal/tolerance.hpp"
 
 namespace surreal {
 
@@ -103,6 +105,20 @@ auto Vector3::cross(const Vector3& rhs) const -> Vector3
         z * rhs.x - x * rhs.z,
         x * rhs.y - y * rhs.x
     );
+}
+
+auto Vector3::makeOrthonormalBasis(Vector3 *a, Vector3 *b, Vector3 *c) const -> void
+{
+    a->normalize();
+    (*c) = (*a) % (*b);
+
+    constexpr auto tol = surreal::tolerance::get_tolerance<surreal::real>();
+    if (c->magnitude_squared() <= tol * tol) {
+        throw std::runtime_error("Cannot create orthonormal basis: input vectors are parallel");
+    }
+   
+    c->normalize();
+    (*b) = (*c) % (*a);
 }
 
 } // surreal namespace

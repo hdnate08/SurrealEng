@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
-#include <surreal/core.hpp>
 #include <cmath>
 
-#include "test_utils.hpp"
+#include "surreal/tolerance.hpp"
+#include "surreal/core.hpp"
 
 class Vector3Test : public ::testing::Test {
     protected:
         // Tolerance for floating-point or double precision comparisons in tests
-        static constexpr auto TOLERANCE = surreal::testing::get_tolerance<surreal::real>();
+        static constexpr auto TOLERANCE = surreal::tolerance::get_tolerance<surreal::real>();
 
         //static_cast ensures the vector is initialized with the correct surreal::real type
         surreal::Vector3 v1{

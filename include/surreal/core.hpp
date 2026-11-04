@@ -76,6 +76,9 @@ namespace surreal {
 
             // Returns the cross product of this vector and another vector
             auto cross(const Vector3& rhs) const -> Vector3;
+
+            // Creates an orthonormal basis from this vector and another vector
+            auto makeOrthonormalBasis(Vector3 *a, Vector3 *b, Vector3 *c) const -> void;
     };
 }
 

@@ -1,7 +1,7 @@
-#ifndef TEST_UTILS_HPP_
-#define TEST_UTILS_HPP_
+#ifndef TOLERANCE_HPP_
+#define TOLERANCE_HPP_
 
-namespace surreal::testing{
+namespace surreal::tolerance{
 
 constexpr float FLOAT_TOLERANCE = 1e-6f;
 constexpr double DOUBLE_TOLERANCE = 1e-12;
@@ -16,6 +16,6 @@ constexpr T get_tolerance() {
     }
 }
 
-}
+} // namespace tolerance
 
-#endif // TEST_UTILS_HPP_
+#endif // TOLERANCE_HPP_
