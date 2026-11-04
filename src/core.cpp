@@ -51,6 +51,11 @@ auto Vector3::operator-=(const Vector3& rhs) -> void
     z -= rhs.z;
 }
 
+auto Vector3::operator%(const Vector3& rhs) const -> Vector3
+{
+    return cross(rhs);
+}
+
 auto Vector3::operator%=(const Vector3& rhs) -> void
 {
     *this = cross(rhs);

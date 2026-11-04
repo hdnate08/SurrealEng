@@ -41,6 +41,9 @@ namespace surreal {
             // Updates this vector by subtracting another vector from it
             auto operator-=(const Vector3& rhs) -> void;
 
+            // Returns the cross product of this vector and another vector
+            auto operator%(const Vector3& rhs) const -> Vector3;
+
             // Updates this vector to be the cross product of this vector and another vector
             auto operator%=(const Vector3& rhs) -> void;
 
