@@ -113,7 +113,7 @@ auto Vector3::makeOrthonormalBasis(Vector3 *a, Vector3 *b, Vector3 *c) const -> 
     (*c) = (*a) % (*b);
 
     constexpr auto tol = surreal::tolerance::get_tolerance<surreal::real>();
-    if (c->magnitude_squared() <= tol * tol) {
+    if (c->magnitude_squared() <= tol * tol) { // TODO: We may not want to throw here in the future
         throw std::runtime_error("Cannot create orthonormal basis: input vectors are parallel");
     }
    

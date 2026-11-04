@@ -20,6 +20,11 @@ class Vector3Test : public ::testing::Test {
             static_cast<surreal::real>(5.0),
             static_cast<surreal::real>(6.0)
         };
+        surreal::Vector3 v3{
+            static_cast<surreal::real>(7.0),
+            static_cast<surreal::real>(8.0),
+            static_cast<surreal::real>(9.0)
+        };
         surreal::Vector3 zero{
             static_cast<surreal::real>(0.0),
             static_cast<surreal::real>(0.0),
@@ -184,4 +189,28 @@ TEST_F(Vector3Test, cross_product) {
 
 TEST_F(Vector3Test, vector_padding) {
     EXPECT_EQ(sizeof(surreal::Vector3), sizeof(surreal::real) * 4);
+}
+
+TEST_F(Vector3Test, make_orthonormal_basis) {
+    surreal::Vector3 a = v1;
+    surreal::Vector3 b = v2;
+    surreal::Vector3 c = v3;
+
+    a.makeOrthonormalBasis(&a, &b, &c);
+
+    EXPECT_NEAR(a.magnitude(), 1.0, TOLERANCE);
+    EXPECT_NEAR(b.magnitude(), 1.0, TOLERANCE);
+    EXPECT_NEAR(c.magnitude(), 1.0, TOLERANCE);
+
+    EXPECT_NEAR(a.dot(b), 0.0, TOLERANCE);
+    EXPECT_NEAR(b.dot(c), 0.0, TOLERANCE);
+    EXPECT_NEAR(c.dot(a), 0.0, TOLERANCE);
+}
+
+TEST_F(Vector3Test, make_orthonormal_basis_parallel_vectors) {
+    surreal::Vector3 a = v1;
+    surreal::Vector3 b = v1;
+    surreal::Vector3 c = v2;
+    
+    EXPECT_THROW(a.makeOrthonormalBasis(&a, &b, &c), std::runtime_error);
 }
