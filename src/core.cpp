@@ -93,6 +93,13 @@ auto Vector3::component_product(const Vector3& rhs) const -> Vector3
     return Vector3(x * rhs.x, y * rhs.y, z * rhs.z);
 }
 
+auto Vector3::add_scaled_vector(const Vector3& rhs, const real scale) -> void
+{
+    x += rhs.x * scale;
+    y += rhs.y * scale;
+    z += rhs.z * scale;
+}
+
 auto Vector3::dot(const Vector3& rhs) const -> real
 {
     return x * rhs.x + y * rhs.y + z * rhs.z;

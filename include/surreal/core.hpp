@@ -9,6 +9,16 @@ namespace surreal {
     */
     class Vector3
     {
+        public:
+            // Holds the value along the x axis
+            real x;
+
+            // Holds the value along the y axis
+            real y;
+
+            // Holds the value along the z axis
+            real z;
+
         private:
             // Padding to ensure four word alignment
             real pad;
@@ -47,15 +57,6 @@ namespace surreal {
             // Updates this vector to be the cross product of this vector and another vector
             auto operator%=(const Vector3& rhs) -> void;
 
-            // Holds the value along the x axis
-            real x;
-
-            // Holds the value along the y axis
-            real y;
-
-            // Holds the value along the z axis
-            real z;
-
             // Flips all components of the vector
             auto negate() -> void;
 
@@ -70,6 +71,9 @@ namespace surreal {
             
             // Returns component-wise product of this vector and another vector
             auto component_product(const Vector3& rhs) const -> Vector3;
+
+            // Update this vector by adding another scaled vector to it
+            auto add_scaled_vector(const Vector3& rhs, const real scale) -> void;
 
             // Returns the dot product of this vector and another vector
             auto dot(const Vector3& rhs) const -> real;
