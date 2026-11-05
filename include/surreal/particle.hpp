@@ -1,14 +1,20 @@
 #ifndef PARTICLE_H_
 #define PARTICLE_H_
 
-#include "surreal/precision.hpp"
-#include "surreal/ core.hpp"
+#include <surreal/precision.hpp>
+#include <surreal/core.hpp>
 
 namespace surreal {
 
 // A particle is the simplest object that can be simulated in the physics system
 class Particle
 {
+    public:
+        // Integrates the particle forward in time by the given amount. This function uses
+        // a Newton-Euler integration method, which is a linear approximation to the correct
+        // integral. For this reason it may be innaccurate in some cases
+        auto integrate(real duration) -> void;
+        
     protected:
         // Holds the linear position of the particle in world space
         Vector3 position;
@@ -29,11 +35,6 @@ class Particle
         // in real-time simulation it is more useful to have objects with infinite
         // mass (immovable) than zero mass (completely unstable)
         real inverse_mass;
-
-        // Integrates the particle forward in time by the given amount. This function uses
-        // a Newton-Euler integration method, which is a linear approximation to the correct
-        // integral. For this reason it may be innaccurate in some cases
-        auto integrate(real duration) -> void;
 };
 
 } // namespace surreal

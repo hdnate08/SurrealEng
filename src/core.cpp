@@ -1,8 +1,8 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "surreal/core.hpp"
-#include "surreal/tolerance.hpp"
+#include <surreal/core.hpp>
+#include <surreal/tolerance.hpp>
 
 namespace surreal {
 

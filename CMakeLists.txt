@@ -4,11 +4,11 @@ project(SurrealEng LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# enables testing for the project workspace
 enable_testing()
 
 add_library(surreal_core
     src/core.cpp
+    src/particle.cpp
 )
 
 target_include_directories(surreal_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
@@ -19,5 +19,5 @@ add_executable(SurrealEngApp
 )
 target_link_libraries(SurrealEngApp PRIVATE surreal_core)
 
-# hook up test dir
+add_subdirectory(src/demos)
 add_subdirectory(tests)

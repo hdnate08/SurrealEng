@@ -1,8 +1,10 @@
-#include <assert>
+#include <cassert>
 
-#include "surreal/particle.hpp"
+#include <surreal/particle.hpp>
 
-auto Particle::integrate(real duration) {
+namespace surreal{
+
+auto Particle::integrate(real duration) -> void {
     
     // We don't integrate objects with infinite mass
     if (inverse_mass <= static_cast<surreal::real>(0.0)) return;
@@ -24,3 +26,5 @@ auto Particle::integrate(real duration) {
     // TODO: Clear forces
     //clear_accumulator();
 }
+
+} // namespace surreal

@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <cmath>
 
-#include "surreal/tolerance.hpp"
-#include "surreal/core.hpp"
+#include <surreal/tolerance.hpp>
+#include <surreal/core.hpp>
 
 class Vector3Test : public ::testing::Test {
     protected:

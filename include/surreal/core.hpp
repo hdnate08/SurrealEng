@@ -1,7 +1,7 @@
 #ifndef CORE_HPP_
 #define CORE_HPP_
 
-#include "surreal/precision.hpp"
+#include <surreal/precision.hpp>
 
 namespace surreal {
     /* Holds a vector in three dimensions. Four data memebers are allocated

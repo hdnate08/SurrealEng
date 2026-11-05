@@ -1,6 +1,8 @@
 #ifndef PRECISION_HPP_
 #define PRECISION_HPP_
 
+#include <cmath>
+
 namespace surreal {
 
     // Defines a real number precision. Surreal can be compiled in single or double precision versions.
