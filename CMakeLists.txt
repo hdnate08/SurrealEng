@@ -1,20 +1,22 @@
 cmake_minimum_required(VERSION 3.25)
 project(SurrealEng LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 enable_testing()
-
-add_compile_options(-Wall -Wextra -Werror -Wpedantic -Wshadow -Wconversion)
 
 # core library
 add_library(surreal_core src/core.cpp src/particle.cpp)
-target_include_directories(surreal_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(surreal_core
+                           PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_compile_features(surreal_core PUBLIC cxx_std_26)
+target_compile_options(surreal_core PRIVATE -Wall -Wextra -Werror -Wpedantic
+                                            -Wshadow -Wconversion)
 
 # main application
 add_executable(SurrealEngApp src/main.cpp)
 target_link_libraries(SurrealEngApp PRIVATE surreal_core)
+target_compile_features(SurrealEngApp PUBLIC cxx_std_26)
+target_compile_options(SurrealEngApp PRIVATE -Wall -Wextra -Werror -Wpedantic
+                                             -Wshadow -Wconversion)
 
 # subdirectories
 add_subdirectory(src/demos)
