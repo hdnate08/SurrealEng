@@ -8,13 +8,14 @@ enable_testing()
 
 add_compile_options(-Wall -Wextra -Werror -Wpedantic -Wshadow -Wconversion)
 
+# core library
 add_library(surreal_core src/core.cpp src/particle.cpp)
-target_include_directories(surreal_core
-                           PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(surreal_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-# main executable which links against the surreal_core library
+# main application
 add_executable(SurrealEngApp src/main.cpp)
 target_link_libraries(SurrealEngApp PRIVATE surreal_core)
 
+# subdirectories
 add_subdirectory(src/demos)
 add_subdirectory(tests)
