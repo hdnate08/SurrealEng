@@ -25,10 +25,10 @@ namespace surreal {
 
         public:
             // The default ctor creates a vector with all components set to zero
-            Vector3();
+            Vector3(): x{0}, y{0}, z{0}, pad{0} {}
 
             // The parameterized ctor creates a vector with the given x, y, and z values
-            Vector3(const real x, const real y, const real z);
+            Vector3(const real _x, const real _y, const real _z): x{_x}, y{_y}, z{_z}, pad{0} {}
 
             // Scales the vector by a scalar value and returns a new vector
             auto operator*(const real scalar) const -> Vector3;
