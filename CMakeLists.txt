@@ -6,17 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 enable_testing()
 
-add_library(surreal_core
-    src/core.cpp
-    src/particle.cpp
-)
+add_compile_options(-Wall -Wextra -Werror -Wpedantic -Wshadow -Wconversion)
 
-target_include_directories(surreal_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+add_library(surreal_core src/core.cpp src/particle.cpp)
+target_include_directories(surreal_core
+                           PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # main executable which links against the surreal_core library
-add_executable(SurrealEngApp
-    src/main.cpp
-)
+add_executable(SurrealEngApp src/main.cpp)
 target_link_libraries(SurrealEngApp PRIVATE surreal_core)
 
 add_subdirectory(src/demos)
