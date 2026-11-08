@@ -59,6 +59,11 @@ auto Vector3::operator%=(const Vector3& rhs) -> void
     *this = cross(rhs);
 }
 
+auto Vector3::clear() -> void
+{
+    x = y = z = 0;
+}
+
 auto Vector3::negate() -> void
 {
     x = -x;

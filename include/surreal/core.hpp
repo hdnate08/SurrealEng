@@ -57,6 +57,9 @@ namespace surreal {
             // Updates this vector to be the cross product of this vector and another vector
             auto operator%=(const Vector3& rhs) -> void;
 
+            // Sets all components to 0
+            auto clear() -> void;
+
             // Flips all components of the vector
             auto negate() -> void;
 
