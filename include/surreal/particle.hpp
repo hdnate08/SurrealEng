@@ -26,6 +26,10 @@ class Particle
         // due to gravity, or any other constant acceleration
         Vector3 acceleration;
 
+        // Holds the accumulated force to be applied at the next simulation iteration only. This value
+        // is zeroed after each integration step
+        Vector3 force_accumulation;
+
         // Holds the amount of damping applied to linear motion. Damping is required to remove energy
         // added through numerical instability in the integrator
         real damping;
@@ -35,6 +39,13 @@ class Particle
         // in real-time simulation it is more useful to have objects with infinite
         // mass (immovable) than zero mass (completely unstable)
         real inverse_mass;
+
+        // Clears the forces applied to the particle. This will be called automatically after each
+        // integration step
+        auto clear_accumulator() -> void;
+
+        // Adds the given force to the particle to be applied at the next iteration only
+        auto add_force(const Vector3 &force) -> void;
 };
 
 } // namespace surreal

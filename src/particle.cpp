@@ -4,7 +4,8 @@
 
 namespace surreal{
 
-auto Particle::integrate(real duration) -> void {
+auto Particle::integrate(real duration) -> void 
+{
     
     // We don't integrate objects with infinite mass
     if (inverse_mass <= 0) return;
@@ -16,6 +17,7 @@ auto Particle::integrate(real duration) -> void {
 
     // Work out acceleration from force
     auto resulting_acceleration = acceleration;
+    resulting_acceleration.add_scaled_vector(resulting_acceleration, duration);
 
     // Update linear velocity from acceleration
     velocity.add_scaled_vector(resulting_acceleration, duration);
@@ -23,8 +25,17 @@ auto Particle::integrate(real duration) -> void {
     // Impose drag
     velocity *= real_pow(damping, duration);
 
-    // TODO: Clear forces
-    //clear_accumulator();
+    clear_accumulator();
+}
+
+auto Particle::clear_accumulator() -> void 
+{
+    force_accumulation.clear();
+}
+
+auto Particle::add_force(const Vector3 &force) -> void
+{
+    force_accumulation += force;
 }
 
 } // namespace surreal
