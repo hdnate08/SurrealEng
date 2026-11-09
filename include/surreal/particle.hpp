@@ -14,6 +14,15 @@ class Particle
         // a Newton-Euler integration method, which is a linear approximation to the correct
         // integral. For this reason it may be innaccurate in some cases
         auto integrate(real duration) -> void;
+
+        // Adds the given force to the particle to be applied at the next iteration only
+        auto add_force(const Vector3 &force) -> void;
+
+        // Returns this particle's mass
+        auto get_mass() const -> real;
+
+        // Returns true if particle has infinite mass
+        auto has_finite_mass() const -> bool;
         
     protected:
         // Holds the linear position of the particle in world space
@@ -43,9 +52,6 @@ class Particle
         // Clears the forces applied to the particle. This will be called automatically after each
         // integration step
         auto clear_accumulator() -> void;
-
-        // Adds the given force to the particle to be applied at the next iteration only
-        auto add_force(const Vector3 &force) -> void;
 };
 
 } // namespace surreal

@@ -38,4 +38,19 @@ auto Particle::add_force(const Vector3 &force) -> void
     force_accumulation += force;
 }
 
+auto Particle::get_mass() const -> real
+{
+    if(!(has_finite_mass()))
+    {
+        return std::numeric_limits<real>::max();
+    }
+
+    return 1.0 / inverse_mass;
+}
+
+auto Particle::has_finite_mass() const -> bool
+{
+    return inverse_mass > 0.0;
+}
+
 } // namespace surreal

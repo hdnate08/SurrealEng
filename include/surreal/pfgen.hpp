@@ -2,6 +2,7 @@
 #define PFGEN_HPP_
 
 #include <surreal/particle.hpp>
+#include <vector>
 
 namespace surreal {
 
@@ -18,7 +19,7 @@ class ParticleForceRegistry {
         struct ParticleForceRegistration
         {
             Particle *particle;
-            ParticleForceGnerator *fg;
+            ParticleForceGenerator *fg;
         };
 
         // Holds list of registrations
@@ -39,6 +40,20 @@ class ParticleForceRegistry {
 
         // Calls all the force generators to update the forces of their corresponding particles
         auto update_forces(real duration) -> void;
+};
+
+// A force generator that applies a gravitational force. One instance can be used for multiple
+// particles
+class ParticleGravity : public ParticleForceGenerator {
+    // Holds acceleration due to gravity
+    Vector3 gravity;
+
+    public:
+        // Creates the generator with the given acceleration
+        ParticleGravity(const Vector3 &gravity);
+
+        // Applies the gravitational force to the given particle
+        virtual auto update_force(Particle* particle, real duration) -> void;
 };
 
 } // namspace surreal
