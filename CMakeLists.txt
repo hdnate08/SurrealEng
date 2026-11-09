@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 4.4)
 project(SurrealEng LANGUAGES CXX)
 
 enable_testing()
 
 # core library
-add_library(surreal_core src/core.cpp src/particle.cpp)
+add_library(surreal_core src/core.cpp src/particle.cpp src/pfgen.cpp)
 target_include_directories(surreal_core
                            PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_compile_features(surreal_core PUBLIC cxx_std_26)
