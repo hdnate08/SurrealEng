@@ -50,7 +50,7 @@ class ParticleGravity : public ParticleForceGenerator {
 
     public:
         // Creates the generator with the given acceleration
-        ParticleGravity(const Vector3 &gravity);
+        ParticleGravity(const Vector3& _gravity) : gravity(_gravity) {};
 
         // Applies the gravitational force to the given particle
         virtual auto update_force(Particle* particle, real duration) -> void;
