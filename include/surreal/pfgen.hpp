@@ -2,7 +2,7 @@
 #define PFGEN_HPP_
 
 #include <surreal/particle.hpp>
-#include <vector>
+#include <surreal/precision.hpp>
 
 namespace surreal {
 
@@ -45,16 +45,35 @@ class ParticleForceRegistry {
 // A force generator that applies a gravitational force. One instance can be used for multiple
 // particles
 class ParticleGravity : public ParticleForceGenerator {
-    // Holds acceleration due to gravity
-    Vector3 gravity;
+    private:
+        // Holds acceleration due to gravity
+        Vector3 gravity;
 
     public:
         // Creates the generator with the given acceleration
         ParticleGravity(const Vector3& _gravity) : gravity(_gravity) {};
 
         // Applies the gravitational force to the given particle
-        virtual auto update_force(Particle* particle, real duration) -> void;
+        auto update_force(Particle* particle, real duration) -> void override;
 };
+
+// A force generator that applies a drag force. One instance can be used for multiple particles
+class ParticleDrag : public ParticleForceGenerator
+{
+    private:
+        // Holds the velocity drag coefficient
+        real k1;
+
+        // Holds the velocity squared drag coefficient
+        real k2;
+
+    public:
+        // Creates the generator with the given coefficients
+        ParticleDrag(real _k1, real _k2) : k1(_k1), k2(_k2) {};
+
+        // Applies the drag force to the given particle
+        auto update_force(Particle* particle, real duration) -> void override;
+}
 
 } // namspace surreal
 
