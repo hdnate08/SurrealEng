@@ -23,6 +23,9 @@ class Particle
 
         // Returns true if particle has infinite mass
         auto has_finite_mass() const -> bool;
+
+        // Copies this particle's velocity into the provided reference
+        auto get_velocity(Vector3& out_velocity) const -> void;
         
     protected:
         // Holds the linear position of the particle in world space

@@ -53,4 +53,9 @@ auto Particle::has_finite_mass() const -> bool
     return inverse_mass > 0.0;
 }
 
+auto Particle::get_velocity(Vector3& out_velocity) const -> void
+{
+    out_velocity = velocity;
+}
+
 } // namespace surreal
