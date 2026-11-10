@@ -42,4 +42,21 @@ auto ParticleGravity::update_force(Particle* particle, real duration) -> void
     particle->add_force(gravity * particle->get_mass());
 }
 
+auto ParticleDrag::update_force(Particle* particle, real duration) -> void
+{
+    Vector3 velocity;
+    particle->get_velocity(&velocity);
+
+    // calculate the speed with full vector magnitude
+    real speed = velocity.magnitude();
+    real drag_coeff = k1 * speed + k2 * speed * speed;
+
+    velocity.normalize();
+
+    // calculate the final force and apply it
+    Vector3 drag_force = velocity * -drag_coeff;
+
+    particle->add_force(drag_force);
+}
+
 } // namespace surreal
