@@ -45,7 +45,7 @@ auto Particle::get_mass() const -> real
         return std::numeric_limits<real>::max();
     }
 
-    return 1.0 / inverse_mass;
+    return static_cast<real>(1.0) / inverse_mass;
 }
 
 auto Particle::has_finite_mass() const -> bool
