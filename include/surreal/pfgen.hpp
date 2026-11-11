@@ -51,7 +51,7 @@ class ParticleGravity : public ParticleForceGenerator {
 
     public:
         // Creates the generator with the given acceleration
-        ParticleGravity(const Vector3& _gravity) : gravity(_gravity) {};
+        ParticleGravity(const Vector3& _gravity) : gravity{_gravity} {};
 
         // Applies the gravitational force to the given particle
         auto update_force(Particle* particle, real duration) -> void override;
@@ -69,7 +69,7 @@ class ParticleDrag : public ParticleForceGenerator
 
     public:
         // Creates the generator with the given coefficients
-        ParticleDrag(real _k1, real _k2) : k1(_k1), k2(_k2) {};
+        ParticleDrag(real _k1, real _k2) : k1{_k1}, k2{_k2} {};
 
         // Applies the drag force to the given particle
         auto update_force(Particle* particle, real duration) -> void override;
