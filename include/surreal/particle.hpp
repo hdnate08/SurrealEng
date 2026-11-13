@@ -26,6 +26,12 @@ class Particle
 
         // Copies this particle's velocity into the provided reference
         auto get_velocity(Vector3* out_velocity) const -> void;
+
+        // Copies this particle's position into the provided reference
+        auto get_position(Vector3* out_position) const -> void;
+
+        // Returns this particles position
+        auto get_position() const -> Vector3;
         
     protected:
         // Holds the linear position of the particle in world space

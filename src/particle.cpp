@@ -58,4 +58,14 @@ auto Particle::get_velocity(Vector3* out_velocity) const -> void
     *out_velocity = velocity;
 }
 
+auto Particle::get_position(Vector3* out_position) const -> void
+{
+    *out_position = position;
+}
+
+auto Particle::get_position() const -> Vector3
+{
+    return position;
+}
+
 } // namespace surreal
