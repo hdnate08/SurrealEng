@@ -11,6 +11,9 @@ namespace surreal {
 
     // Defines the precision of the power operator
     #define real_pow powf
+
+    // Defines the precision of the absolute magnitude operator
+    #define real_abs fabsf
 }
 
 #endif // PRECISION_HPP_

@@ -3,6 +3,7 @@
 
 #include <surreal/particle.hpp>
 #include <surreal/precision.hpp>
+#include <vector>
 
 namespace surreal {
 
@@ -73,7 +74,28 @@ class ParticleDrag : public ParticleForceGenerator
 
         // Applies the drag force to the given particle
         auto update_force(Particle* particle, real duration) -> void override;
-}
+};
+
+// A force generator that applied a spring force
+class ParticleSpring : public ParticleForceGenerator
+{
+    private:
+        // The particle at the other end of the spring
+        Particle* other;
+
+        // Holds the spring constant
+        real spring_constant;
+
+        // Holds the rest length of the spring
+        real rest_length;
+
+    public:
+        // Creates a new spring with the given parameters
+        ParticleSpring(Particle* _other, real _spring_constant, real _rest_length) : other(_other), spring_constant(_spring_constant), rest_length(_rest_length) {};
+
+        // Applies the spring force to the given particle
+        auto update_force(Particle* particle, real duration)-> void override;
+};
 
 } // namspace surreal
 

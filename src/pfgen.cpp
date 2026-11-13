@@ -32,9 +32,8 @@ auto ParticleForceRegistry::clear() -> void
     registrations.clear();
 }
 
-auto ParticleGravity::update_force(Particle* particle, real duration) -> void
+auto ParticleGravity::update_force(Particle* particle, real /*duration*/) -> void
 {
-    (void)duration;
     // check for infinite mass
     if(!particle->has_finite_mass()) return;
 
@@ -42,7 +41,7 @@ auto ParticleGravity::update_force(Particle* particle, real duration) -> void
     particle->add_force(gravity * particle->get_mass());
 }
 
-auto ParticleDrag::update_force(Particle* particle, real duration) -> void
+auto ParticleDrag::update_force(Particle* particle, real /*duration*/) -> void
 {
     Vector3 velocity;
     particle->get_velocity(&velocity);
@@ -57,6 +56,23 @@ auto ParticleDrag::update_force(Particle* particle, real duration) -> void
     Vector3 drag_force = velocity * -drag_coeff;
 
     particle->add_force(drag_force);
+}
+
+auto ParticleSpring::update_force(Particle* particle, real /*duration*/)-> void
+{
+    // Calculate the vector between the two particles
+    Vector3 force_direction;
+    particle->get_position(&force_direction);
+    force_direction -= other->get_position();
+
+    // Calculate the magnitude of the force
+    real distance = force_direction.magnitude();
+    real force_magnitude = real_abs(distance - rest_length) * spring_constant;
+
+    // Calculate the final force and apply it
+    force_direction.normalize();
+    force_direction *= -force_magnitude;
+    particle->add_force(force_direction);
 }
 
 } // namespace surreal
